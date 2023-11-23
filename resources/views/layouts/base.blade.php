@@ -5,14 +5,19 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-            
-            body {
+            /* reset all margins to disable the top gap between the body and the screen */ 
+            * {
+                margin: 0px;
+                padding: 0px;
+            }
+
+
+            .page-base-container {
                 display: flex;
                 flex-flow: column;
                 flex-wrap: nowrap;
-                /*margin-left: 100px;
-                margin-right: 100px;*/
             }
+
 
             /* header */
             header {
@@ -21,6 +26,8 @@
                 display: flex;
                 flex-wrap: nowrap;
                 justify-content: space-between;
+                height: 4rem;
+                align-items: center;
             }
 
             .logo {
@@ -53,6 +60,7 @@
                 background-color: #04AA6D;
                 color: white;
             }
+
 
             /* user form */
             .user-form-container{
@@ -97,6 +105,14 @@
 
 
             /* users-table */
+            .users-table{
+                margin: 10px 10px;
+            }
+
+            .users-table > h1{
+                margin-top: 20px;
+            }
+            
             .users-table table {
                 font-family: Arial, Helvetica, sans-serif;
                 border-collapse: collapse;
@@ -163,10 +179,7 @@
     <body>
         <div class="page-base-container">
             @include('layouts.partials.header')
-            <div class="user-form-container">
-                @yield('user_form')
-            </div>
-            @yield('users_table')
+            @yield('content')
             @include('layouts.partials.footer')
         </div>
     </body>

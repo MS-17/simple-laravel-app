@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('users_table')
+@section('content')
     <div class="users-table">
         <h1>Users table</h1>
         @php
