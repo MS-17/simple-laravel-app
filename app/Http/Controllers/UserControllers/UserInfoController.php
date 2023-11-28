@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\UserControllers;
 
 use App\Http\Controllers\Controller;
-//use Illuminate\Support\Facades\Storage;
-//use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 
 class UserInfoController extends Controller {
-    public function index(){
+    public function index(): View {
         $users = [];
         $path = storage_path('app/user/') . "*.json";        
         foreach (glob($path) as $idx => $json_file) {
@@ -17,3 +16,4 @@ class UserInfoController extends Controller {
         return view("user.users_table", ["data" => $users]);
     }
 }
+

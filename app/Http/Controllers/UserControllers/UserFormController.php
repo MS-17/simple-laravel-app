@@ -36,8 +36,6 @@ class UserFormController extends Controller {
         }
 
         Storage::put($path . uniqid() . '.json', json_encode($validate));
-        return redirect('/form') 
-                -> with('success_message', 'Your data was saved successfully')
-                -> with('yield_user_form', true);
+        return redirect('/form') -> with('success_message', 'Your data was saved successfully');
     }
 }
