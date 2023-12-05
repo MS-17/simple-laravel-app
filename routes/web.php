@@ -23,3 +23,8 @@ Route::get('/form', [Controllers\UserControllers\UserFormController::class, 'ind
 Route::post('/form', [Controllers\UserControllers\UserFormController::class, 'save_user']);
 Route::get('/users', [Controllers\UserControllers\UserInfoController::class, 'index']);
 
+
+Route::get("/books", [Controllers\BookControllers\BookController::class, 'index']);
+
+
+
