@@ -25,10 +25,9 @@ Route::get('/users', [Controllers\UserControllers\UserInfoController::class, 'in
 
 
 Route::get("/books", [Controllers\BookControllers\BookController::class, 'index']);
-Route::post("/create/book", [Controllers\BookControllers\BookController::class, 'create']);
+Route::get("/create/book", [Controllers\BookControllers\BookController::class, 'create']);
+Route::post("/create/book", [Controllers\BookControllers\BookController::class, 'save']);
 Route::post("/edit/book", [Controllers\BookControllers\BookController::class, 'edit']);
-
-
 
 
 
