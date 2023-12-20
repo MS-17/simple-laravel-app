@@ -24,10 +24,11 @@ Route::post('/form', [Controllers\UserControllers\UserFormController::class, 'sa
 Route::get('/users', [Controllers\UserControllers\UserInfoController::class, 'index']);
 
 
-Route::get("/books", [Controllers\BookControllers\BookController::class, 'index']);
-Route::get("/create/book", [Controllers\BookControllers\BookController::class, 'create']);
-Route::post("/create/book", [Controllers\BookControllers\BookController::class, 'save']);
-Route::post("/edit/book", [Controllers\BookControllers\BookController::class, 'edit']);
+Route::get("/books", [Controllers\BookControllers\BookController::class, 'get_books_list']);
+Route::get("/create/book", [Controllers\BookControllers\BookController::class, 'get_create_view']);
+Route::post("/create/book", [Controllers\BookControllers\BookController::class, 'save_new_book']);
+Route::get("/edit/book/{id}", [Controllers\BookControllers\BookController::class, 'get_edit_view']);
+Route::post("/edit/book/{id}", [Controllers\BookControllers\BookController::class, 'save_changed_book']);
 
 
 

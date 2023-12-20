@@ -11,7 +11,8 @@ class Book extends Model
     use HasFactory;
 
     protected $fillable = ["title", "description", "author_id", "genre_id"];
-    
+    protected $hidden = ["created_at", "updated_at"];
+
     public function author(): BelongsTo {
         return $this -> belongsTo(Author::class);
     }

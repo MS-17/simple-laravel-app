@@ -1,12 +1,27 @@
 @extends('layouts.base')
 @section('content')
 <div style="width: 500px; margin: 10px;">
+    <!-- <pre> {{ $books }} </pre> -->
+    @foreach ($books as $book)
+        <div> {{ $book }} </div>
+        <form method="GET" action="/edit/book/{{$book->id}}">
+            <input style="display:block;width:fit-content;" type="submit" name="submit" value="Edit">
+        </form>
+        <br/>
+    @endforeach
     <div>
-        <h2>Create a book</h2><br/>
-        <form method="POST" action="/create/book">
+        <form method="GET" action="/create/book">
             @csrf
-            
-            <label>Book title</label>
+            <input type="submit" name="submit" value="Create a book">
+        </form>
+    </div>
+</div>
+@endsection
+
+
+
+
+<!--  <label>Book title</label>
             <input type="text" name="title" value="{{ old('title', 'title') }}">
             @error('title')
                 <div style="color: red"> {{ $message }} </div> <br/>
@@ -39,11 +54,4 @@
             @if (session('success_message'))
                 <div style="color: green;">{{ session('success_message') }}</div>
             @endif
-            
-            <input type="submit" name="submit" value="Submit">
-
-        </form>
-    
-    </div>
-</div>
-@endsection
+            --> 
