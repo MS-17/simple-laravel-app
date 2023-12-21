@@ -84,6 +84,9 @@ class BookController extends Controller
             ]
         );
 
+        // possible change: you don't have to update a book if nothing's changed and 
+        // send the corresponding to this case message 
+
         $book = Book::find($id);
         $book -> title = $validate["title"];
         $book -> description = $validate["description"];
@@ -94,6 +97,13 @@ class BookController extends Controller
 
         return redirect("/edit/book/".$id) -> with("success_message", "The data was saved successfully");
     }
+
+    public function soft_delete_book(Request $request): RedirectResponse {
+        if (ctype_digit($request -> book_id)){
+            Book::where("id", $request -> book_id) -> delete();
+        }
+        return redirect("/books");
+   }
 
 }
 

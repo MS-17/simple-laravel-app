@@ -35,6 +35,7 @@
                 <th>Author lastname</th>                    
                 <th>Genre</th>                    
                 <th>Edit</th>                    
+                <th>Delete</th>                    
             </tr>
 
             @foreach($books_list as $book)
@@ -46,7 +47,17 @@
                     <td>{{ $book["genre"]["name"] }}</td>
                     <td>
                         <form method="GET" action="/edit/book/{{$book['id']}}">
+                            @csrf
                             <input style="display:block;width:fit-content;" type="submit" name="submit" value="Edit">
+                        </form>
+                    </td>
+                    <td>
+                        <!-- <form method="POST" action="softdelete/book/{{$book['id']}}"> -->
+                        <form method="POST" action="">
+                            @method('DELETE')
+                            @csrf
+                            <input type="hidden" name="book_id" value="{{$book['id']}}" />
+                            <input style="display:block;width:fit-content;" type="submit" name="submit" value="Delete">
                         </form>
                     </td>
                 </tr>

@@ -25,6 +25,7 @@ Route::get('/users', [Controllers\UserControllers\UserInfoController::class, 'in
 
 
 Route::get("/books", [Controllers\BookControllers\BookController::class, 'get_books_list']);
+Route::delete("/books", [Controllers\BookControllers\BookController::class, 'soft_delete_book']);
 Route::get("/create/book", [Controllers\BookControllers\BookController::class, 'get_create_view']);
 Route::post("/create/book", [Controllers\BookControllers\BookController::class, 'save_new_book']);
 Route::get("/edit/book/{id}", [Controllers\BookControllers\BookController::class, 'get_edit_view']);
