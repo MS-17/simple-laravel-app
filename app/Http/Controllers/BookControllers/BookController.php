@@ -14,9 +14,10 @@ class BookController extends Controller
 {
     
     public function get_books_list() {
-        $book = Book::all();
+        // $book = Book::all();
         // dump($b);
-        return view("books.get_books_list", ["books" => $book]);
+        $books = Book::with("author", "genre") -> get();
+        return view("books.get_books_list", ["books" => $books -> toArray()]);
     }
     
 
@@ -60,11 +61,7 @@ class BookController extends Controller
 
 
     public function get_edit_view(string $id): View {
-        // dd($id);
-
-        // TODO: make join with author and genre
         $book_data = Book::with("author", "genre") -> where("id", $id) ->get();
-        // return view("books.edit_book", ["book_data" => (array)$book_data]);
         return view("books.edit_book", ["book_data" => $book_data]);
     }
 
@@ -90,12 +87,11 @@ class BookController extends Controller
         $book = Book::find($id);
         $book -> title = $validate["title"];
         $book -> description = $validate["description"];
-        $book -> author -> name = $validate["author_name"]; //[0] -> author_name;
+        $book -> author -> name = $validate["author_name"];
         $book -> author -> lastname = $validate["author_lastname"];
         $book -> genre -> name = $validate["genre"];
-        
-        // dd($book);
         $book -> push();
+
         return redirect("/edit/book/".$id) -> with("success_message", "The data was saved successfully");
     }
 

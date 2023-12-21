@@ -5,11 +5,10 @@
         @php 
                 $data = $book_data[0]
         @endphp
+        <h2>Edit your book</h2><br/>
         <form method="POST" action="/edit/book/{{$data -> id}}">
             @csrf
-            Hello
-            <pre> {{ $book_data }} </pre>
-            
+            <!-- <pre> {{ $book_data }} </pre> -->
             <!-- <pre> {{ $book_data[0] -> title }} </pre> -->
             <!-- <pre> {{ json_encode($book_data) }} </pre> -->
 			<label>Book title</label>
